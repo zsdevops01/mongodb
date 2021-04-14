@@ -7,23 +7,17 @@ Choose `mongodb` from the list.
 
 Ref URL: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/
 
-1. Setup MongoDB repos.
+1. Get MongoDB public Key  & Mongo repos
 
 ```
-echo '[mongodb-org-4.2]
-name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/
-gpgcheck=1
-enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc' >/etc/yum.repos.d/mongodb.repo
+# wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+# echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+# apt update
 ```
-
 2. Install Mongo & Start Service.
 
 ```
-# yum install -y mongodb-org 
-# systemctl enable mongod
-# systemctl start mongod
+# apt install -y mongodb-org
 ```
 
 3. Update Liste IP address from 127.0.0.1 to 0.0.0.0 in config file 
